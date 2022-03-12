@@ -25,8 +25,15 @@
 import Foundation
 import UIKit
 
+public protocol CHIOTPFieldDelegate: AnyObject {
+
+    func onTextChanged(_ text: String?)
+}
+
 @IBDesignable
 open class CHIOTPField<Label: POTPLabel>: UITextField, UITextFieldDelegate {
+
+    public var codeDelegate: CHIOTPFieldDelegate?
 
     @IBInspectable
     public var numberOfDigits: Int = 4 {
@@ -140,6 +147,7 @@ open class CHIOTPField<Label: POTPLabel>: UITextField, UITextFieldDelegate {
             text.removeLast()
             self.text = text
             updateFocus()
+            self.codeDelegate?.onTextChanged(text)
             return false
         }
 
@@ -162,6 +170,7 @@ open class CHIOTPField<Label: POTPLabel>: UITextField, UITextFieldDelegate {
             }
         })
         updateFocus()
+        self.codeDelegate?.onTextChanged(text)
     }
 
     private func changeText(oldValue: String?, newValue: String?) {

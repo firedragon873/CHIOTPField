@@ -70,11 +70,11 @@ final public class CHIOTPFieldTwoLabel: UIView, POTPLabel {
         get { return _backgroundColor }
     }
 
-    var activeBackgroundColor = UIColor.white
-    var filledBackgroundColor = UIColor.white
+    public var activeBackgroundColor = UIColor.white
+    public var filledBackgroundColor = UIColor.white
 
-    var activeBorderColor: UIColor?
-    var filledBorderColor: UIColor?
+    public var activeBorderColor: UIColor?
+    public var filledBorderColor: UIColor?
 
     private var animator = UIViewPropertyAnimator()
     private let label: UILabel
